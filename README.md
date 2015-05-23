@@ -1,6 +1,6 @@
 mystation
 ===
-My portable custom desktop
+My portable custom workstation
 
 ```
 docker run -it --rm \
