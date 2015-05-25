@@ -2,7 +2,7 @@ mystation
 ===
 My portable custom workstation. This container requires that you have `docker` group on the host allowing docker commands to be run without sudo.
 
-From <a href="http://askubuntu.com/questions/477551/how-can-i-use-docker-without-sudo">http://askubuntu.com/questions/477551/how-can-i-use-docker-without-sudo</a>
+From: <a href="http://askubuntu.com/questions/477551/how-can-i-use-docker-without-sudo">http://askubuntu.com/questions/477551/how-can-i-use-docker-without-sudo</a>
   * Add the docker group if it doesn't already exist.
 ```
 sudo groupadd docker
