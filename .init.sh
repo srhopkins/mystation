@@ -8,7 +8,7 @@ sed -i 's/^%sudo.*$/%sudo  ALL=(ALL) NOPASSWD:ALL/' /etc/sudoers
 
 # Create user's home
 mkdir /home/${USER}
-cp .profile .bashrc /home/${USER}
+cp .profile .bashrc .tmux.conf /home/${USER}
 chown -R ${USER}:${USER} /home/${USER}
 
 su - ${USER} 
