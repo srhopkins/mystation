@@ -4,14 +4,13 @@ My portable custom workstation. This container requires that you have docker gro
 
 Basic run
 ---
-This creates a user on container of ther same user you are logged in as on host and mounts current working directory to user's home/shared.
+This creates a user in the container of the same username as current login of the host and mounts current working directory to user's home/shared.
 ```
 docker run -it --rm \
   -e USER \
   -v `pwd`:/home/${USER}/shared
   -v /usr/bin/docker:/usr/bin/docker \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  -v /etc/bash_completion.d/docker:/etc/bash_completion.d/docker \
   -h mystation \
   srhopkins/mystation
 ```
@@ -23,7 +22,6 @@ docker run -it --rm \
   -v `pwd`:/home/${USER} \
   -v /usr/bin/docker:/usr/bin/docker \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  -v /etc/bash_completion.d/docker:/etc/bash_completion.d/docker \
   -h mystation \
   srhopkins/mystation
 ```
@@ -36,7 +34,6 @@ docker run -it --rm \
   -v `pwd`:/home/${USER} \
   -v /usr/bin/docker:/usr/bin/docker \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  -v /etc/bash_completion.d/docker:/etc/bash_completion.d/docker \
   -h mystation \
   srhopkins/mystation
 ```
