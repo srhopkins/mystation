@@ -9,6 +9,7 @@ RUN apt-get update && apt-get -y install \
   tmux \
   curl \
   wget \
+  bash-completion \
   sqlite3
 
 ENV DEBIAN_FRONTEND dialog
