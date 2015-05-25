@@ -6,9 +6,16 @@ useradd -G sudo,docker ${USER}
 # Add NOPASSWD to sudo group
 sed -i 's/^%sudo.*$/%sudo  ALL=(ALL) NOPASSWD:ALL/' /etc/sudoers
 
-# Create user's home
-mkdir /home/${USER}
-cp .profile .bashrc .tmux.conf /home/${USER}
-chown -R ${USER}:${USER} /home/${USER}
+# Create user's home if it doesn't exist (e.g. volume not mounted from host)
+[ -d /home/${USER} ] || mkdir /home/${USER}
 
-su - ${USER} 
+# Copy over default confs unless they are already present.
+for file_name in .profile .bashrc .tmux.conf; do
+  if [ ! -f /home/${USER}/${file_name} ]
+  then
+    cp ${file_name} /home/${USER}
+    chown -R ${USER}:${USER} /home/${USER}/${file_name}
+  fi
+done
+
+su - ${USER}
