@@ -4,8 +4,8 @@
 groupadd --gid `stat -c "%g" /var/run/docker.sock` docker
 
 # Add username passed with '-e USER' on docker run and assign docker secondary group
-[ -n "${user_uid}" ] && specific_uid="-u ${user_uid}" || specific_uid=""
-useradd ${specific_uid} -G sudo,docker ${USER}
+[ -n "${UID}" ] && SET_UID="-u ${UID}" || SET_UID=""
+useradd ${SET_UID} -G sudo,docker ${USER}
 
 # Add NOPASSWD to sudo group
 sed -i 's/^%sudo.*$/%sudo  ALL=(ALL) NOPASSWD:ALL/' /etc/sudoers
