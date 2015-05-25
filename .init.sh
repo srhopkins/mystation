@@ -1,11 +1,14 @@
-#set -x
+set -x
 
-# Create docker goup with same gid as host so we don't need to use sudo for docker
+# Create docker goup with same gid as host so we don't need to use sudo for docker commands.
+# Requires docker group to be setup on host too.
 groupadd --gid `stat -c "%g" /var/run/docker.sock` docker
 
-# Add username passed with '-e USER' on docker run and assign docker secondary group
-[ -n "${UID}" ] && SET_UID="-u ${UID}" || SET_UID=""
-useradd ${SET_UID} -G sudo,docker ${USER}
+# Add username passed with '-e USER' on docker run and assign docker secondary group.
+# If UID env var is present set uid to that. If username is "docker" skip group creation.
+[ -n "${UID}" ] && ARGS="-u ${UID}" || ARGS=""
+[ "${USER}" = "docker" ] && ARGS="${ARGS} --no-user-group" 
+useradd ${ARGS} -G sudo,docker ${USER}
 
 # Add NOPASSWD to sudo group
 sed -i 's/^%sudo.*$/%sudo  ALL=(ALL) NOPASSWD:ALL/' /etc/sudoers
