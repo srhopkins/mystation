@@ -1,7 +1,11 @@
+#set -x
+
 # Create docker goup with same gid as host so we don't need to use sudo for docker
 groupadd --gid `stat -c "%g" /var/run/docker.sock` docker
+
 # Add username passed with '-e USER' on docker run and assign docker secondary group
-useradd -G sudo,docker ${USER}
+[ -n "${user_uid}" ] && specific_uid="-u ${user_uid}" || specific_uid=""
+useradd ${specific_uid} -G sudo,docker ${USER}
 
 # Add NOPASSWD to sudo group
 sed -i 's/^%sudo.*$/%sudo  ALL=(ALL) NOPASSWD:ALL/' /etc/sudoers

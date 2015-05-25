@@ -24,6 +24,9 @@ ENV PATH /opt/python/bin:$PATH
 
 RUN pip install -U docker-compose
 
+RUN ln -s /opt/python/bin/python /usr/bin/
+RUN ln -s /opt/python/bin/docker-compose /usr/local/bin/
+
 COPY .tmux.conf /root/.tmux.conf
 COPY .init.sh /root/.init.sh
 RUN chmod +x /root/.init.sh
