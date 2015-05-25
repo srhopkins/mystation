@@ -10,6 +10,7 @@ RUN apt-get update && apt-get -y install \
   curl \
   wget \
   bash-completion \
+  mr \
   sqlite3
 
 ENV DEBIAN_FRONTEND dialog
