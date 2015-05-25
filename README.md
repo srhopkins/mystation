@@ -8,7 +8,9 @@ From: <a href="http://askubuntu.com/questions/477551/how-can-i-use-docker-withou
 sudo groupadd docker
 ```
   * Add the connected user "${USER}" to the docker group. Change the user name to match your preferred user.
-```sudo gpasswd -a ${USER} docker```
+```
+sudo gpasswd -a ${USER} docker
+```
   * Restart the Docker daemon:
 ```
 sudo service docker restart
