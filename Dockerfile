@@ -3,6 +3,8 @@ FROM ubuntu:vivid
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get -y install \
+  man \
+  sudo \
   git \
   tmux \
   curl \
@@ -23,7 +25,9 @@ ENV PATH /opt/python/bin:$PATH
 RUN pip install -U docker-compose
 
 COPY .tmux.conf /root/.tmux.conf
+COPY .init.sh /root/.init.sh
+RUN chmod +x /root/.init.sh
 
 WORKDIR /root
 
-CMD /bin/bash
+CMD /root/.init.sh
