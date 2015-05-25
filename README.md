@@ -4,10 +4,10 @@ My portable custom workstation
 
 ```
 docker run -it --rm \
-  -v `pwd`:/root/shared \
+  -e USER \
+  -v `pwd`:/home/${USER}/shared
   -v /usr/bin/docker:/usr/bin/docker \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  -e USER \
   -h mystation \
   srhopkins/mystation
 ```
