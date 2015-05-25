@@ -1,4 +1,4 @@
-set -x
+#set -x
 
 # Create docker goup with same gid as host so we don't need to use sudo for docker commands.
 # Requires docker group to be setup on host too.
