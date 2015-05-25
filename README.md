@@ -4,7 +4,9 @@ My portable custom workstation. This container requires that you have `docker` g
 
 From <a href="http://askubuntu.com/questions/477551/how-can-i-use-docker-without-sudo">http://askubuntu.com/questions/477551/how-can-i-use-docker-without-sudo</a>
   * Add the docker group if it doesn't already exist.
-```sudo groupadd docker```
+```
+sudo groupadd docker
+```
   * Add the connected user "${USER}" to the docker group. Change the user name to match your preferred user.
 ```sudo gpasswd -a ${USER} docker```
   * Restart the Docker daemon:
