@@ -3,6 +3,8 @@ FROM ubuntu:vivid
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get -y install \
+  apt-transport-https \
+  ca-certificates \
   man \
   sudo \
   git \
@@ -11,7 +13,12 @@ RUN apt-get update && apt-get -y install \
   wget \
   bash-completion \
   mr \
+  lxc \
+  iptables \
   sqlite3
+
+# Install Docker from Docker Inc. repositories.
+RUN curl -sSL https://get.docker.com/ubuntu/ | sh
 
 ENV DEBIAN_FRONTEND dialog
 
@@ -28,7 +35,7 @@ RUN pip install -U docker-compose
 
 RUN curl -sL https://raw.githubusercontent.com/docker/docker/master/contrib/completion/bash/docker > /etc/bash_completion.d/docker
 RUN curl -sL https://raw.githubusercontent.com/docker/compose/1.2.0/contrib/completion/bash/docker-compose > /etc/bash_completion.d/docker-compose
-RUN ln -s /opt/python/bin/python /usr/bin/
+#RUN ln -s /opt/python/bin/python /usr/bin/
 RUN ln -s /opt/python/bin/docker-compose /usr/local/bin/
 
 COPY .tmux.conf /root/.tmux.conf
