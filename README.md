@@ -9,10 +9,9 @@ Basic usage using your own .bashrc, etc if present.
 docker run -it --rm \
   -e USER \
   -v `pwd`:/home/${USER} \
-  -v /var/lib/docker:/var/lib/docker
-  --privileged
+  -v /var/lib/docker:/var/lib/docker \
   --net=host \
-  --privileged
+  --privileged \
   srhopkins/mystation
 ```
 
@@ -22,10 +21,9 @@ docker run -it --rm \
   -e USER \
   -e UID=`id -u`
   -v `pwd`:/home/${USER} \
-  -v /var/lib/docker:/var/lib/docker
-  --privileged
+  -v /var/lib/docker:/var/lib/docker \
   --net=host \
-  --privileged
+  --privileged \
   srhopkins/mystation
 ```
 
