@@ -4,12 +4,15 @@ My portable custom workstation.
 
 Basic run
 ---
-This is the same as above but mounts cwd to user's home/. This is useful if you want to provide your own .bashrc, etc.
+Basic usage using your own .bashrc, etc if present.
 ```
 docker run -it --rm \
   -e USER \
   -v `pwd`:/home/${USER} \
-  -h mystation \
+  -v /var/lib/docker:/var/lib/docker
+  --privileged
+  --net=host \
+  --privileged
   srhopkins/mystation
 ```
 
@@ -19,7 +22,10 @@ docker run -it --rm \
   -e USER \
   -e UID=`id -u`
   -v `pwd`:/home/${USER} \
-  -h mystation \
+  -v /var/lib/docker:/var/lib/docker
+  --privileged
+  --net=host \
+  --privileged
   srhopkins/mystation
 ```
 

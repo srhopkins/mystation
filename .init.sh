@@ -1,9 +1,5 @@
 #set -x
 
-# Create docker goup with same gid as host so we don't need to use sudo for docker commands.
-# Requires docker group to be setup on host too.
-#groupadd docker #--gid `stat -c "%g" /var/run/docker.sock` docker
-
 # Add username passed with '-e USER' on docker run and assign docker secondary group.
 # If UID env var is present set uid to that. If username is "docker" skip group creation.
 [ -n "${UID}" ] && ARGS="-u ${UID}" || ARGS=""
@@ -26,6 +22,5 @@ for file_name in .profile .bashrc .tmux.conf; do
 done
 
 service docker start
-#systemctl start docker
 
 su - ${USER}

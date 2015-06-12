@@ -15,3 +15,16 @@ docker ps
 sudo su -
 ll
 docker ps
+ll
+docker-compose 
+tmux
+ll
+docker-compose 
+pwd
+pt-get
+apt-get
+docker ps
+pwd
+touch testing
+pwd
+ll
