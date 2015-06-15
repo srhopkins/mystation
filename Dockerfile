@@ -15,6 +15,7 @@ RUN apt-get update && apt-get -y install \
   mr \
   lxc \
   iptables \
+  vim-gnome \
   sqlite3
 
 # Install Docker from Docker Inc. repositories.
