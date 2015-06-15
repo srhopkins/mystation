@@ -15,6 +15,7 @@ RUN apt-get update && apt-get -y install \
   mr \
   lxc \
   iptables \
+  dnsutils \
   vim-gnome \
   sqlite3
 
